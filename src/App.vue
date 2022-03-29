@@ -9,7 +9,7 @@
       <v-toolbar-title>Application</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
+      
       <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
@@ -17,13 +17,24 @@
 
     <v-main>
       <v-container>
+        
         <v-row>
-          <v-col
+          <BotaoGem/>
+          <v-col 
             v-for="(poke,index) in filteredPokemons"
             :key="poke.url"
-            cols="4"
-          >
-            <v-card height="200"><DexPokemon :name="poke.name" :url="poke.url" :num="index+1"/></v-card>
+            cols="2"
+            >
+            <v-sheet
+              
+              color="white"
+              elevation="5"
+              height="190"
+              width="285"
+            > <DexPokemon :name="poke.name" :url="poke.url" :num="index+1"/>
+              
+            </v-sheet>
+            
           </v-col>
         </v-row>
       </v-container>
@@ -37,6 +48,7 @@
 <script>
 import axios from 'axios';
 import DexPokemon from './components/DexPokemon.vue';
+import BotaoGem from './components/BotaoGem.vue'
 
 export default {
   name: 'App',
@@ -47,14 +59,17 @@ export default {
       busca: '',
     }
   },
+  
+
   created: function(){
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then(res=>{
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=150&offset=0").then(res=>{
       console.log("pegou a lista de pokemons");
       this.pokemons = res.data.results;
       this.filteredPokemons = res.data.results;
       })
   },
   components:{
+    BotaoGem,
     DexPokemon
   },
   methods:{

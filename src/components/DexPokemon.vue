@@ -14,7 +14,7 @@
             <div class="media">
             <div class="media-content">
                 <p class="title is-4">{{num}} - {{name | upper}}</p>
-                <button class="button is-info is-light" @click="mudarSprite">Virar</button>
+                <button class="" @click="mudarSprite">Virar</button>
                 
             </div>
             </div>
@@ -77,10 +77,10 @@ export default {
         mudarSprite: function() {
             if(this.isFront){
                 this.isFront = false;
-                this.currentImg = this.pokemon.front_shiny;
+                this.currentImg = this.pokemon.front;
             }else {
                 this.isFront = true;
-                this.currentImg = this.pokemon.front;
+                this.currentImg = this.pokemon.front_shiny;
             }
         }
     }
@@ -90,11 +90,10 @@ export default {
 
 <style>
     #pokemon{
-        margin-top: 2%;
+        margin-top: 1%;
+        margin-left: 30%;
     }
 
-    .content{
-        
-    }
+    
 
 </style>
